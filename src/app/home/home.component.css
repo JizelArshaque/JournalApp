@@ -11,3 +11,9 @@
     font-size: 16px;
     z-index: 999; 
 }
+@media(max-width:768px){
+    .container{
+        width: 320px;
+
+    }
+}

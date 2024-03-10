@@ -11,9 +11,12 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     const email = sessionStorage.getItem('email')
     this.getUserdata(email)
+    this.getJournal()
   }
   constructor(private api:ApiService){}
   user:any={}
+
+  allJournal:any=[]
 
   getUserdata(id:any){
     this.api.getUserAPi(id).subscribe({
@@ -22,6 +25,20 @@ export class HomeComponent implements OnInit{
       },
       error:(er1:any)=>{
         Swal.fire('Error While loading page! please reload the page again')
+      }
+    })
+  }
+
+  getJournal(){
+    this.api.getJournalApi().subscribe({
+      next:(res:any)=>{
+        this.allJournal=res
+        
+        
+      },
+      error:(err:any)=>{
+        console.log(err.error);
+        
       }
     })
   }

@@ -1,9 +1,9 @@
 <div class="container">
     <h2>Add to My Journals</h2>
-    <form action="#" method="post">
+    <form [formGroup]="journalForm" (ngSubmit)="addJournal()">
       <div class="form-group">
         <label for="journalEntry">Write your entry:</label>
-        <textarea id="journalEntry" name="journalEntry" required></textarea>
+        <textarea id="journalEntry" name="journalEntry" formControlName="content" ></textarea>
       </div>
       <div class="text-center"><button class="btn btn-primary" type="submit">Add to My Journals</button></div>
     </form>
