@@ -10,7 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private fb:FormBuilder,private api:ApiService,private router:Router){}
+  constructor(private fb:FormBuilder,private api:ApiService,private router:Router){
+
+  }
 
  loginForm = this.fb.group({
   email:['',[Validators.required,Validators.email]],
@@ -28,6 +30,8 @@ export class LoginComponent {
         Swal.fire('login succesful!')
         sessionStorage.setItem("email",res.existingUser.email)
         sessionStorage.setItem("token",res.token)
+        // this.api.loginbehaviour({data:true})
+        this.api.sharedData.next(false)
 
         this.router.navigateByUrl('/home')
       },

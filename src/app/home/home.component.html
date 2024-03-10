@@ -1,28 +1,27 @@
-<nav style="background-color: grey; height: 8vh;" >
-    <div class="d-flex justify-content-between p-1">
-        <div class="d-flex">
-            <div class="d-flex  justify-content-center align-items-center n p-1 ms-5">
-                <i class="fa-solid fa-book-open"></i>
-                <h5 class="ms-2 mt-1">Journal</h5>
-            </div>
-        </div>
 
-        <div>
-            <button class="btn" routerLink="/myaccount">Account</button>
-        </div>
-    </div>
-</nav>
 <div class="container mt-3">
     <h3>Welcome back, {{user.username}}</h3>
 </div>
-<div class="container rounded border shadow 1px mt-5" *ngFor="let journal of allJournal">
-    <p class="p-2 mt-2"><span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: large;">{{journal.content}}</span></p>
-    <div class=" d-flex justify-content-between">
-        <p style="visibility: hidden;">x</p>
-        <p class="text-secondary">{{journal.date}}</p>
+<span *ngIf="(allJournal.length) == 0" >
+    <div  class="d-flex justify-content-center align-items-center flex-column" style="margin-top: 150px;">
+        <H1>Empty!</H1>
+        <p>Write something now..</p>
     </div>
+</span>
+<span *ngIf="(allJournal.length) != 0">
+    <div class="container rounded border shadow 1px mt-5 mb-5" *ngFor="let journal of allJournal| paginate: { itemsPerPage: 8, currentPage: p }">
+        <div routerLink="/viewjournal/{{journal._id}}">
+            <p class="p-2 mt-2"><span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: large;">{{journal.content}}</span></p>
+            <div class=" d-flex justify-content-between">
+                <p style="visibility: hidden;">x</p>
+                <p class="text-secondary">{{journal.date.slice(0,25)}}</p>
+            </div>
+        </div>
+        
     
-
-</div>
+    </div>
+</span>
 
 <button  class="fixed-button" routerLink="/addJournal">Write something</button>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

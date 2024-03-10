@@ -10,7 +10,10 @@ import { ExamComponent } from './exam/exam.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MyAccountComponent } from './my-account/my-account.component';
-import { AddJournalComponent } from './add-journal/add-journal.component'
+import { AddJournalComponent } from './add-journal/add-journal.component';
+import { HeaderComponent } from './header/header.component';
+import { ViewjournalComponent } from './viewjournal/viewjournal.component'
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,14 +23,17 @@ import { AddJournalComponent } from './add-journal/add-journal.component'
     RegisterComponent,
     ExamComponent,
     MyAccountComponent,
-    AddJournalComponent
+    AddJournalComponent,
+    HeaderComponent,
+    ViewjournalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

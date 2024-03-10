@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,14 @@ import { Injectable } from '@angular/core';
 export class ApiService {
   constructor(private http:HttpClient){}
 
-  server= 'http://localhost:3000'
+  // server= 'http://localhost:3000'
+  server="https://journalapp-server.onrender.com"
+
+  public sharedData = new BehaviorSubject(false)
+
+  loginbehaviour(data:any){
+    this.sharedData.next(data)
+  }
 
   // reg
   registerApi(user:any){
@@ -41,6 +49,16 @@ export class ApiService {
   // getjournal 
   getJournalApi(){
     return this.http.get(`${this.server}/getjournals`,this.addTokenToheaders())
+  }
+
+  // single journal api
+  getSingleJournalApi(id:any){
+    return this.http.get(`${this.server}/vjournal/${id}`,this.addTokenToheaders())
+  }
+
+  // delete journal api
+  deleteJournalApi(id:any){
+    return this.http.delete(`${this.server}/delete/${id}`)
   }
 
 

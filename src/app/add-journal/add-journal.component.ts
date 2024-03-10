@@ -20,10 +20,13 @@ export class AddJournalComponent {
   addJournal(){
     if(this.journalForm.valid){
       const content = this.journalForm.value.content
-      let d = new Date() 
-      let date = d.toLocaleString(undefined,
-          { timeZone: 'Asia/Kolkata' });
-      const data = { content , date}
+      
+      const dateFromTimestamp = new Date().getTime();
+      const date1 = new Date()
+      const date= date1.toString()
+      const data = { content , date, dateFromTimestamp}
+      console.log(data);
+      
       this.api.addJournalApi(data).subscribe({
         next:(res)=>{
           Swal.fire('Entry added!')

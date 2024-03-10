@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit{
   user:any={}
 
   allJournal:any=[]
+  p:number=1
 
   getUserdata(id:any){
     this.api.getUserAPi(id).subscribe({

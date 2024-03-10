@@ -27,8 +27,13 @@ export class MyAccountComponent implements OnInit{
   }
 
   logout(){
+    this.api.sharedData.next(true)
     sessionStorage.removeItem('email')
     sessionStorage.removeItem('token')
+    
     this.router.navigateByUrl('')
+
+    
+    
   }
 }

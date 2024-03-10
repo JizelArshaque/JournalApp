@@ -1,0 +1,11 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+    <div class="d-flex justify-content-center align-items-center ms-2">
+        <i class="fa-solid fa-book-open"></i>
+        <h5 class="ms-2">Journal</h5>
+    </div>
+    <form class="form-inline">
+        <button *ngIf="!logged" class="btn" routerLink="/myaccount">Account</button>
+        <!-- <button *ngIf="logged" class="btn btn-outline">login</button> -->
+    
+    </form>
+  </nav>
